@@ -52,6 +52,31 @@ nav a:hover {
     color: #ff3b30;
 }
 
+.header-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.login-btn {
+    background-color: transparent;
+    color: #333;
+    border: 2px solid #333;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.login-btn:hover {
+    background-color: #333;
+    color: white;
+}
+
 .book-now-btn {
     background-color: #ff3b30;
     color: white;
@@ -627,6 +652,137 @@ footer {
     color: #999;
 }
 
+/* Login Page Styles */
+.login-container-wrapper {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.login-card {
+    background: white;
+    border-radius: 0;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.login-header-section {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.login-form {
+    margin-bottom: 1.5rem;
+}
+
+.form-group-login {
+    margin-bottom: 1.5rem;
+}
+
+.form-group-login label {
+    display: block;
+    color: #333;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 3rem;
+    border: none;
+    background-color: #f5f5f5;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    background-color: #ebebeb;
+}
+
+.input-wrapper input::placeholder {
+    color: #999;
+}
+
+.form-options-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+}
+
+.remember-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.remember-checkbox input[type="checkbox"] {
+    width: auto;
+}
+
+.forgot-link {
+    color: #ff3b30;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+.login-submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #ff3b30;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.login-submit-btn:hover {
+    background-color: #e62e24;
+}
+
+.secure-notice {
+    text-align: center;
+    color: #666;
+    font-size: 0.8rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.secure-notice i {
+    color: #ff3b30;
+    margin-right: 0.5rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-container {
@@ -638,6 +794,16 @@ footer {
         flex-direction: column;
         gap: 0.5rem;
         text-align: center;
+    }
+
+    .header-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .login-btn,
+    .book-now-btn {
+        width: 100%;
     }
 
     .big-label {

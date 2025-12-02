@@ -25,7 +25,12 @@
                     <li><a href="#location">Location</a></li>
                 </ul>
             </nav>
-            <button class="book-now-btn">Book Now</button>
+            <div class="header-buttons">
+                <button class="login-btn" onclick="window.location.href='/login'">
+                    <i class="fas fa-user"></i> Staff Login
+                </button>
+                <button class="book-now-btn">Book Now</button>
+            </div>
         </div>
     </header>
 
