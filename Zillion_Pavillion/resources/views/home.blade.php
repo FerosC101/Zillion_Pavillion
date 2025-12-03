@@ -42,78 +42,183 @@
 <section id="rooms">
     <div class="section-container">
         <div class="small-label">OUR ACCOMMODATIONS</div>
-        <h2 class="big-label">Rooms and Suites</h2>
-        <p class="section-description">Choose from our selection of rooms and suites</p>
+        <h2 class="big-label">Rooms and Rates</h2>
+        <p class="section-description">Choose from our selection of rooms and check availability</p>
+        
+        <!-- Booking Search Box -->
+        <div class="room-search-box">
+            <div class="search-field">
+                <label for="room-checkin">Check-in</label>
+                <input type="date" id="room-checkin" class="room-date-input">
+            </div>
+            <div class="search-field">
+                <label for="room-checkout">Check-out</label>
+                <input type="date" id="room-checkout" class="room-date-input">
+            </div>
+            <div class="search-field">
+                <label for="room-rooms">Rooms</label>
+                <select id="room-rooms" class="room-select-input">
+                    <option value="1">1 Room</option>
+                    <option value="2">2 Rooms</option>
+                    <option value="3">3 Rooms</option>
+                    <option value="4">4 Rooms</option>
+                </select>
+            </div>
+            <div class="search-field">
+                <label for="room-adults">Adults</label>
+                <select id="room-adults" class="room-select-input">
+                    <option value="1">1 Adult</option>
+                    <option value="2" selected>2 Adults</option>
+                    <option value="3">3 Adults</option>
+                    <option value="4">4 Adults</option>
+                    <option value="5">5 Adults</option>
+                </select>
+            </div>
+            <div class="search-field">
+                <label for="room-kids">Kids</label>
+                <select id="room-kids" class="room-select-input">
+                    <option value="0" selected>0 Kids</option>
+                    <option value="1">1 Kid</option>
+                    <option value="2">2 Kids</option>
+                    <option value="3">3 Kids</option>
+                    <option value="4">4 Kids</option>
+                </select>
+            </div>
+            <button class="find-rooms-btn" onclick="checkRates()">
+                <i class="fas fa-search"></i> Find Rooms
+            </button>
+        </div>
+
         <div class="rooms-container">
-            <!-- Room 1 -->
+            <!-- Room 1: Budget -->
             <div class="room-box">
                 <div class="room-image" style="background-image: url('{{ asset('images/superiorking.jpg') }}');"></div>
-                <div class="price-tag">P9,999/night</div>
+                <div class="price-tag">From ₱1,474/night</div>
                 <div class="room-details">
-                    <h3 class="room-name">Superior King</h3>
+                    <h3 class="room-name">Budget</h3>
+                    <p class="room-type">Well-kept Fans</p>
                     <div class="room-features">
                         <div class="feature">
-                            <i class="fas fa-bed"></i>
-                            <span>King Bed</span>
+                            <i class="fas fa-wifi"></i>
+                            <span>Free Internet</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-users"></i>
-                            <span>2 Guests</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-expand"></i>
-                            <span>35 sqm</span>
+                            <i class="fas fa-parking"></i>
+                            <span>Free Parking</span>
                         </div>
                     </div>
-                    <button class="room-book-btn">Book Now</button>
+                    <button class="room-book-btn">Check Rates</button>
                 </div>
             </div>
-            <!-- Room 2 -->
+            
+            <!-- Room 2: Deluxe 1 Queen Bed -->
             <div class="room-box">
                 <div class="room-image" style="background-image: url('{{ asset('images/superiortwin.jpg') }}');"></div>
-                <div class="price-tag">P9,999/night</div>
+                <div class="price-tag">From ₱1,673/night</div>
                 <div class="room-details">
-                    <h3 class="room-name">Superior Twin</h3>
+                    <h3 class="room-name">Deluxe 1 Queen Bed</h3>
+                    <p class="room-type">Well-kept Fans</p>
                     <div class="room-features">
                         <div class="feature">
-                            <i class="fas fa-bed"></i>
-                            <span>Twin Beds</span>
+                            <i class="fas fa-wifi"></i>
+                            <span>Free Internet</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-users"></i>
-                            <span>2 Guests</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-expand"></i>
-                            <span>35 sqm</span>
+                            <i class="fas fa-parking"></i>
+                            <span>Free Parking</span>
                         </div>
                     </div>
-                    <button class="room-book-btn">Book Now</button>
+                    <button class="room-book-btn">Check Rates</button>
                 </div>
             </div>
-            <!-- Room 3 -->
+            
+            <!-- Room 3: Superior 1 Queen Bed -->
+            <div class="room-box">
+                <div class="room-image" style="background-image: url('{{ asset('images/superiorking.jpg') }}');"></div>
+                <div class="price-tag">From ₱1,872/night</div>
+                <div class="room-details">
+                    <h3 class="room-name">Superior 1 Queen Bed</h3>
+                    <p class="room-type">Well-kept Fans</p>
+                    <div class="room-features">
+                        <div class="feature">
+                            <i class="fas fa-wifi"></i>
+                            <span>Free Internet</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-parking"></i>
+                            <span>Free Parking</span>
+                        </div>
+                    </div>
+                    <button class="room-book-btn">Check Rates</button>
+                </div>
+            </div>
+            
+            <!-- Room 4: Deluxe -->
+            <div class="room-box">
+                <div class="room-image" style="background-image: url('{{ asset('images/superiortwin.jpg') }}');"></div>
+                <div class="price-tag">From ₱1,971/night</div>
+                <div class="room-details">
+                    <h3 class="room-name">Deluxe</h3>
+                    <p class="room-type">Well-kept Fans</p>
+                    <div class="room-features">
+                        <div class="feature">
+                            <i class="fas fa-wifi"></i>
+                            <span>Free Internet</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-parking"></i>
+                            <span>Free Parking</span>
+                        </div>
+                    </div>
+                    <button class="room-book-btn">Check Rates</button>
+                </div>
+            </div>
+            
+            <!-- Room 5: Family Studio -->
             <div class="room-box">
                 <div class="room-image" style="background-image: url('{{ asset('images/familyroom.jpg') }}');"></div>
-                <div class="price-tag">P9,999/night</div>
+                <div class="price-tag">From ₱3,185/night</div>
                 <div class="room-details">
-                    <h3 class="room-name">Family Room</h3>
+                    <h3 class="room-name">Family Studio</h3>
+                    <p class="room-type">Well-kept Fans</p>
                     <div class="room-features">
                         <div class="feature">
-                            <i class="fas fa-bed"></i>
-                            <span>Multiple Beds</span>
+                            <i class="fas fa-wifi"></i>
+                            <span>Free Internet</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-users"></i>
-                            <span>4+ Guests</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-expand"></i>
-                            <span>50 sqm</span>
+                            <i class="fas fa-parking"></i>
+                            <span>Free Parking</span>
                         </div>
                     </div>
-                    <button class="room-book-btn">Book Now</button>
+                    <button class="room-book-btn">Check Rates</button>
                 </div>
             </div>
+            
+            <!-- Room 6: Deluxe Family -->
+            <div class="room-box">
+                <div class="room-image" style="background-image: url('{{ asset('images/familyroom.jpg') }}');"></div>
+                <div class="price-tag">From ₱4,262/night</div>
+                <div class="room-details">
+                    <h3 class="room-name">Deluxe Family</h3>
+                    <p class="room-type">Well-kept Fans</p>
+                    <div class="room-features">
+                        <div class="feature">
+                            <i class="fas fa-wifi"></i>
+                            <span>Free Internet</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-parking"></i>
+                            <span>Free Parking</span>
+                        </div>
+                    </div>
+                    <button class="room-book-btn">Check Rates</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="view-more-rooms">
+            <button class="book-now-btn">Find Available Rooms</button>
         </div>
     </div>
 </section>
@@ -125,53 +230,188 @@
         <h2 class="big-label">Hotel Amenities</h2>
         <p class="section-description">Enjoy facilities and services designed for your comfort and convenience</p>
         <div class="amenities-container">
-            <!-- Amenity 1 -->
-            <div class="amenity-box">
-                <div class="amenity-icon">
-                    <i class="fas fa-swimming-pool"></i>
-                </div>
-                <h3 class="amenity-name">Swimming Pool</h3>
-                <p class="amenity-description">Relax in our temperature-controlled infinity pool with panoramic views.</p>
-            </div>
-            <!-- Amenity 2 -->
-            <div class="amenity-box">
-                <div class="amenity-icon">
-                    <i class="fas fa-spa"></i>
-                </div>
-                <h3 class="amenity-name">Spa & Wellness</h3>
-                <p class="amenity-description">Rejuvenate with our range of therapeutic treatments and massages.</p>
-            </div>
-            <!-- Amenity 3 -->
-            <div class="amenity-box">
-                <div class="amenity-icon">
-                    <i class="fas fa-dumbbell"></i>
-                </div>
-                <h3 class="amenity-name">Fitness Center</h3>
-                <p class="amenity-description">State-of-the-art gym equipment for your workout routine.</p>
-            </div>
-            <!-- Amenity 4 -->
-            <div class="amenity-box">
-                <div class="amenity-icon">
-                    <i class="fas fa-utensils"></i>
-                </div>
-                <h3 class="amenity-name">Fine Dining</h3>
-                <p class="amenity-description">Exquisite culinary experiences at our award-winning restaurants.</p>
-            </div>
-            <!-- Amenity 5 -->
-            <div class="amenity-box">
-                <div class="amenity-icon">
-                    <i class="fas fa-wifi"></i>
-                </div>
-                <h3 class="amenity-name">High-Speed WiFi</h3>
-                <p class="amenity-description">Complimentary high-speed internet access throughout the hotel.</p>
-            </div>
-            <!-- Amenity 6 -->
+            <!-- Row 1 -->
             <div class="amenity-box">
                 <div class="amenity-icon">
                     <i class="fas fa-concierge-bell"></i>
                 </div>
-                <h3 class="amenity-name">24/7 Concierge</h3>
-                <p class="amenity-description">Our dedicated staff is available round the clock to assist you.</p>
+                <h3 class="amenity-name">Room Service</h3>
+                <p class="amenity-description">Convenient in-room dining service available for your comfort.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-car"></i>
+                </div>
+                <h3 class="amenity-name">Car Rental</h3>
+                <p class="amenity-description">Easy access to car rental services for your convenience.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h3 class="amenity-name">Children's Play Area</h3>
+                <p class="amenity-description">Safe and fun play area for children to enjoy.</p>
+            </div>
+            
+            <!-- Row 2 -->
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="amenity-name">24 Hour Front Desk</h3>
+                <p class="amenity-description">Our staff is available round the clock to assist you.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <h3 class="amenity-name">Cable/Satellite TV</h3>
+                <p class="amenity-description">Entertainment options with cable and satellite channels.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-spray-can"></i>
+                </div>
+                <h3 class="amenity-name">Property Cleaned with Disinfectant</h3>
+                <p class="amenity-description">Maintaining high standards of cleanliness and hygiene.</p>
+            </div>
+            
+            <!-- Row 3 -->
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3 class="amenity-name">Restaurant</h3>
+                <p class="amenity-description">Exquisite culinary experiences at our on-site restaurant.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="amenity-name">Guest Safety Measures</h3>
+                <p class="amenity-description">Property confirms they are implementing guest safety measures.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-bed"></i>
+                </div>
+                <h3 class="amenity-name">Clean Bed Sheets & Towels</h3>
+                <p class="amenity-description">Bed sheets and towels washed at 60°C/140°F minimum.</p>
+            </div>
+            
+            <!-- Row 4 -->
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3 class="amenity-name">Concierge</h3>
+                <p class="amenity-description">Professional concierge services for all your needs.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-temperature-high"></i>
+                </div>
+                <h3 class="amenity-name">Temperature Checks</h3>
+                <p class="amenity-description">Temperature checks available to guests for safety.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-mask"></i>
+                </div>
+                <h3 class="amenity-name">Masks Available</h3>
+                <p class="amenity-description">Masks are available to guests when needed.</p>
+            </div>
+            
+            <!-- Row 5 -->
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-hand-sparkles"></i>
+                </div>
+                <h3 class="amenity-name">Free Hand Sanitizer</h3>
+                <p class="amenity-description">Guests are provided with free hand sanitizer.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-box"></i>
+                </div>
+                <h3 class="amenity-name">Individually-Wrapped Food</h3>
+                <p class="amenity-description">Individually-wrapped food options are available.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-door-closed"></i>
+                </div>
+                <h3 class="amenity-name">In Room Safe</h3>
+                <p class="amenity-description">Secure your valuables in the in-room safe.</p>
+            </div>
+            
+            <!-- Row 6 -->
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-people-arrows"></i>
+                </div>
+                <h3 class="amenity-name">Social Distancing Measures</h3>
+                <p class="amenity-description">Social distancing measures are in place throughout the property.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <h3 class="amenity-name">Internet Access - Free Public Access</h3>
+                <p class="amenity-description">Complimentary high-speed WiFi throughout the hotel.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <h3 class="amenity-name">ATM Machine</h3>
+                <p class="amenity-description">ATM machine available on premises for your convenience.</p>
+            </div>
+            
+            <!-- Row 7 -->
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3 class="amenity-name">Game Room</h3>
+                <p class="amenity-description">Entertainment and recreation in our game room.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-shield-virus"></i>
+                </div>
+                <h3 class="amenity-name">Acrylic Shield in Contact Areas</h3>
+                <p class="amenity-description">Acrylic shield between guests and staff in main contact areas.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3 class="amenity-name">BBQ Grills</h3>
+                <p class="amenity-description">Outdoor BBQ grills available for guest use.</p>
+            </div>
+            
+            <!-- Row 8 -->
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-soap"></i>
+                </div>
+                <h3 class="amenity-name">Laundry</h3>
+                <p class="amenity-description">Convenient laundry services for extended stays.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-smoking-ban"></i>
+                </div>
+                <h3 class="amenity-name">Non-Smoking Facility</h3>
+                <p class="amenity-description">A smoke-free environment for all guests' comfort.</p>
+            </div>
+            <div class="amenity-box">
+                <div class="amenity-icon">
+                    <i class="fas fa-paw"></i>
+                </div>
+                <h3 class="amenity-name">Pet Friendly</h3>
+                <p class="amenity-description">Pets are welcome at our hotel with prior arrangement.</p>
             </div>
         </div>
     </div>

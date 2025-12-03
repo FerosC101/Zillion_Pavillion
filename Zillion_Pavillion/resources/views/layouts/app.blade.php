@@ -126,8 +126,13 @@
         // Set minimum date for check-in to today
         const today = new Date().toISOString().split('T')[0];
         const checkinInput = document.getElementById('checkin');
+        const roomCheckinInput = document.getElementById('room-checkin');
+        
         if (checkinInput) {
             checkinInput.min = today;
+        }
+        if (roomCheckinInput) {
+            roomCheckinInput.min = today;
         }
         
         // Set minimum date for check-out to check-in date
@@ -138,6 +143,32 @@
                     checkoutInput.min = this.value;
                 }
             });
+        }
+        
+        if (roomCheckinInput) {
+            roomCheckinInput.addEventListener('change', function() {
+                const roomCheckoutInput = document.getElementById('room-checkout');
+                if (roomCheckoutInput) {
+                    roomCheckoutInput.min = this.value;
+                }
+            });
+        }
+        
+        // Check rates function
+        function checkRates() {
+            const checkin = document.getElementById('room-checkin').value;
+            const checkout = document.getElementById('room-checkout').value;
+            const rooms = document.getElementById('room-rooms').value;
+            const adults = document.getElementById('room-adults').value;
+            const kids = document.getElementById('room-kids').value;
+            
+            if (!checkin || !checkout) {
+                alert('Please select check-in and check-out dates');
+                return;
+            }
+            
+            alert(`Searching for ${rooms} room(s) for ${adults} adult(s) and ${kids} kid(s) from ${checkin} to ${checkout}`);
+            // TODO: Implement actual rate checking logic
         }
 
         // Book Now buttons functionality
