@@ -230,7 +230,7 @@
         <h2 class="big-label">Hotel Amenities</h2>
         <p class="section-description">Enjoy facilities and services designed for your comfort and convenience</p>
         <div class="amenities-container">
-            <!-- Row 1 -->
+            <!-- Row 1 - Visible -->
             <div class="amenity-box">
                 <div class="amenity-icon">
                     <i class="fas fa-concierge-bell"></i>
@@ -253,7 +253,7 @@
                 <p class="amenity-description">Safe and fun play area for children to enjoy.</p>
             </div>
             
-            <!-- Row 2 -->
+            <!-- Row 2 - Visible -->
             <div class="amenity-box">
                 <div class="amenity-icon">
                     <i class="fas fa-clock"></i>
@@ -276,7 +276,7 @@
                 <p class="amenity-description">Maintaining high standards of cleanliness and hygiene.</p>
             </div>
             
-            <!-- Row 3 -->
+            <!-- Row 3 - Visible -->
             <div class="amenity-box">
                 <div class="amenity-icon">
                     <i class="fas fa-utensils"></i>
@@ -298,7 +298,10 @@
                 <h3 class="amenity-name">Clean Bed Sheets & Towels</h3>
                 <p class="amenity-description">Bed sheets and towels washed at 60°C/140°F minimum.</p>
             </div>
-            
+        </div>
+        
+        <!-- Hidden Amenities -->
+        <div class="amenities-container hidden-amenities" id="moreAmenities" style="display: none;">
             <!-- Row 4 -->
             <div class="amenity-box">
                 <div class="amenity-icon">
@@ -413,6 +416,14 @@
                 <h3 class="amenity-name">Pet Friendly</h3>
                 <p class="amenity-description">Pets are welcome at our hotel with prior arrangement.</p>
             </div>
+        </div>
+        
+        <!-- View More Button -->
+        <div class="view-more-amenities">
+            <button class="view-more-btn" id="viewMoreBtn" onclick="toggleAmenities()">
+                <span id="btnText">View All Amenities</span>
+                <i class="fas fa-chevron-down" id="btnIcon"></i>
+            </button>
         </div>
     </div>
 </section>

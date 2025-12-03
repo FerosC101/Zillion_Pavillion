@@ -170,6 +170,24 @@
             alert(`Searching for ${rooms} room(s) for ${adults} adult(s) and ${kids} kid(s) from ${checkin} to ${checkout}`);
             // TODO: Implement actual rate checking logic
         }
+        
+        // Toggle amenities function
+        function toggleAmenities() {
+            const moreAmenities = document.getElementById('moreAmenities');
+            const btn = document.getElementById('viewMoreBtn');
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+            
+            if (moreAmenities.style.display === 'none') {
+                moreAmenities.style.display = 'grid';
+                btnText.textContent = 'Show Less';
+                btn.classList.add('active');
+            } else {
+                moreAmenities.style.display = 'none';
+                btnText.textContent = 'View All Amenities';
+                btn.classList.remove('active');
+            }
+        }
 
         // Book Now buttons functionality
         document.querySelectorAll('.book-now-btn, .room-book-btn').forEach(button => {
