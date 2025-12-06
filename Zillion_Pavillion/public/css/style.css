@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
@@ -134,7 +138,7 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .home-content {
@@ -280,8 +284,15 @@ nav a:hover {
     margin-top: 3rem;
 }
 
+.rooms-note {
+    color: #666;
+    font-size: 0.95rem;
+    font-style: italic;
+    margin: 0;
+}
+
 section {
-    padding: 2rem 0;
+    padding: 4rem 0;
 }
 
 section .small-label {
@@ -385,12 +396,14 @@ section .section-description {
 
 .room-book-btn:hover {
     background-color: #ff3b30;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 59, 48, 0.3);
 }
 
 /* Amenities Section */
 .amenities-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     margin-top: 3rem;
 }
@@ -674,6 +687,7 @@ section .section-description {
 
 .latest-news i {
     color: #ff3b30;
+    min-width: 20px;
 }
 
 .location-map {
@@ -940,6 +954,565 @@ footer {
     .amenities-container,
     .gallery-container,
     .reviews-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* About Us Section */
+.about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-content h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin: 2rem 0 1rem 0;
+}
+
+.about-content h3:first-child {
+    margin-top: 0;
+}
+
+.about-content p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f8f8;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+}
+
+.stat-box i {
+    font-size: 3rem;
+    color: #ff3b30;
+    margin-bottom: 1rem;
+}
+
+.stat-box h4 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.stat-box p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Services Section */
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.service-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, #ff3b30 0%, #ff6b5a 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.service-box h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.service-box p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Special Offers Section */
+#offers {
+    background: #f8f8f8;
+}
+
+.offers-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.offer-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.offer-box:hover {
+    transform: translateY(-5px);
+}
+
+.offer-badge {
+    position: absolute;
+    top: 20px;
+    right: -35px;
+    background: #ff3b30;
+    color: white;
+    padding: 0.5rem 3rem;
+    transform: rotate(45deg);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.offer-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem;
+    background: #f8f8f8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.offer-icon i {
+    font-size: 2rem;
+    color: #ff3b30;
+}
+
+.offer-box h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.offer-discount {
+    font-size: 1.8rem;
+    color: #ff3b30;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.offer-box > p {
+    color: #666;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.offer-features {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+.offer-features li {
+    padding: 0.5rem 0;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.offer-features i {
+    color: #ff3b30;
+    font-size: 0.9rem;
+}
+
+.offer-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #ff3b30;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.offer-btn:hover {
+    background-color: #e62e24;
+}
+
+/* Nearby Attractions Section */
+.attractions-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.attraction-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.attraction-box:hover {
+    transform: translateY(-5px);
+}
+
+.attraction-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1rem;
+    background: #f8f8f8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.attraction-icon i {
+    font-size: 2rem;
+    color: #ff3b30;
+}
+
+.attraction-box h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.attraction-distance {
+    color: #ff3b30;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.attraction-distance i {
+    margin-right: 0.3rem;
+}
+
+.attraction-box p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Business & Events Section */
+#business {
+    background: #f8f8f8;
+}
+
+.business-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.business-content h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.business-content > p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.business-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0 3rem 0;
+}
+
+.business-feature {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.business-feature i {
+    font-size: 2rem;
+    color: #ff3b30;
+    margin-top: 0.25rem;
+}
+
+.business-feature h4 {
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.business-feature p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.business-content .book-now-btn {
+    margin-top: 2rem;
+}
+
+/* FAQ Section */
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.faq-question i {
+    font-size: 1.5rem;
+    color: #ff3b30;
+}
+
+.faq-question h3 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.faq-answer {
+    color: #666;
+    line-height: 1.8;
+    padding-left: 2.5rem;
+}
+
+/* Hotel Policies Section */
+#policies {
+    background: #f8f8f8;
+}
+
+.policies-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.policy-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.policy-box h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.policy-box h3 i {
+    color: #ff3b30;
+}
+
+.policy-box ul {
+    list-style: none;
+}
+
+.policy-box ul li {
+    padding: 0.5rem 0;
+    color: #666;
+    border-bottom: 1px solid #eee;
+}
+
+.policy-box ul li:last-child {
+    border-bottom: none;
+}
+
+/* Contact Form Section */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.contact-form-wrapper {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff3b30;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #ff3b30;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.submit-btn:hover {
+    background-color: #e62e24;
+}
+
+.contact-info-wrapper {
+    background: #f8f8f8;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.contact-info-wrapper h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.contact-detail {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+}
+
+.contact-detail i {
+    font-size: 1.5rem;
+    color: #ff3b30;
+    margin-top: 0.25rem;
+}
+
+.contact-detail h4 {
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.contact-detail p {
+    color: #666;
+    margin: 0;
+}
+
+.social-media {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #ddd;
+}
+
+.social-media h4 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Responsive for new sections */
+@media (max-width: 768px) {
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-container,
+    .offers-container,
+    .attractions-container,
+    .policies-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .business-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .contact-form .form-row {
         grid-template-columns: 1fr;
     }
 }
