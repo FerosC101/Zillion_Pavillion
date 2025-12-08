@@ -38,7 +38,7 @@
                     <i class="fas fa-search"></i> Search Rooms
                 </button>
             @else
-                <button class="search-btn" onclick="window.location.href='{{ route('login') }}'">
+                <button class="search-btn" onclick="window.location.href='{{ route('client.login') }}'">>
                     <i class="fas fa-sign-in-alt"></i> Login to Book
                 </button>
             @endauth

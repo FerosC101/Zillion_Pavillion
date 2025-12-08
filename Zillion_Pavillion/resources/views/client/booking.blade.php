@@ -19,17 +19,34 @@
         overflow: hidden;
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         transition: all 0.3s;
-        border: 2px solid transparent;
+        border: 3px solid transparent;
     }
 
     .room-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        border-color: rgba(255, 59, 48, 0.3);
     }
 
     .room-card.selected {
         border-color: var(--primary-color);
-        box-shadow: 0 8px 24px rgba(255, 59, 48, 0.3);
+        box-shadow: 0 8px 24px rgba(255, 59, 48, 0.4);
+        position: relative;
+    }
+    
+    .room-card.selected::before {
+        content: '✓ Selected';
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: linear-gradient(135deg, #43e97b, #38f9d7);
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(67, 233, 123, 0.4);
     }
 
     .room-image {
@@ -150,21 +167,27 @@
     }
 
     .selected-room-info {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #ff3b30 0%, #d32f2f 100%);
         color: #fff;
         padding: 1.5rem;
         border-radius: 12px;
         margin-bottom: 2rem;
+        box-shadow: 0 4px 12px rgba(255, 59, 48, 0.2);
     }
 
     .selected-room-info h4 {
         margin: 0 0 0.5rem 0;
         font-size: 1.3rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
     .selected-room-info p {
         margin: 0;
         opacity: 0.95;
+        font-size: 1.1rem;
+        font-weight: 500;
     }
 
     .form-group {
@@ -210,22 +233,43 @@
     }
 
     .service-card {
-        border: 2px solid #dee2e6;
-        border-radius: 8px;
-        padding: 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px;
         cursor: pointer;
         transition: all 0.3s;
         position: relative;
+        background: #fff;
     }
 
     .service-card:hover {
         border-color: var(--primary-color);
-        box-shadow: 0 4px 12px rgba(255, 59, 48, 0.2);
+        box-shadow: 0 6px 16px rgba(255, 59, 48, 0.15);
+        transform: translateY(-2px);
     }
 
     .service-card.selected {
         border-color: var(--primary-color);
-        background: rgba(255, 59, 48, 0.05);
+        background: linear-gradient(135deg, rgba(255, 59, 48, 0.05), rgba(255, 59, 48, 0.1));
+        box-shadow: 0 4px 12px rgba(255, 59, 48, 0.2);
+    }
+    
+    .service-card.selected::after {
+        content: '✓';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        background: linear-gradient(135deg, #43e97b, #38f9d7);
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        box-shadow: 0 2px 8px rgba(67, 233, 123, 0.4);
     }
 
     .service-card input[type="checkbox"] {
@@ -240,20 +284,26 @@
     .service-card h4 {
         margin: 0 0 10px 0;
         color: #2c3e50;
-        font-size: 1.1rem;
+        font-size: 1.15rem;
+        font-weight: 600;
     }
 
     .service-card p {
-        margin: 5px 0;
-        color: #7f8c8d;
+        margin: 5px 0 15px 0;
+        color: #6c757d;
         font-size: 0.9rem;
+        line-height: 1.5;
     }
 
     .service-price {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         font-weight: 700;
         color: var(--primary-color);
         margin-top: 10px;
+        display: inline-block;
+        padding: 8px 16px;
+        background: rgba(255, 59, 48, 0.1);
+        border-radius: 8px;
     }
 
     .form-row {
@@ -263,21 +313,24 @@
     }
 
     .total-preview {
-        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
         color: #fff;
-        padding: 20px;
-        border-radius: 8px;
+        padding: 30px;
+        border-radius: 16px;
         text-align: center;
-        margin: 20px 0;
+        margin: 30px 0;
+        box-shadow: 0 6px 20px rgba(67, 233, 123, 0.3);
     }
 
     .total-preview h3 {
-        margin: 0 0 10px 0;
-        font-size: 1.2rem;
+        margin: 0 0 15px 0;
+        font-size: 1.3rem;
+        font-weight: 600;
+        opacity: 0.95;
     }
 
     .total-preview .amount {
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-weight: 700;
     }
 

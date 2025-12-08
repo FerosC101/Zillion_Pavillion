@@ -2,7 +2,7 @@
 
 @section('title', 'Dashboard')
 @section('page-title', 'My Dashboard')
-@section('page-subtitle', 'Welcome back, {{ auth()->guard('web')->user()->full_name }}!')
+@section('page-subtitle', 'Welcome back, {{ auth()->user()->full_name }}!')
 
 @push('styles')
 <style>
