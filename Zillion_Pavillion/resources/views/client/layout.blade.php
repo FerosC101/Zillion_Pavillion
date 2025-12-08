@@ -21,21 +21,23 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: #f5f7fa;
             min-height: 100vh;
+            line-height: 1.6;
+            color: #333;
         }
 
         /* Header */
         .client-header {
             background: #fff;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
         .client-nav {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 1.2rem 2rem;
             display: flex;
@@ -63,34 +65,38 @@
             font-size: 0.85rem;
             color: #7f8c8d;
             margin: 0;
+            display: none;
         }
 
         .nav-menu {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
+            flex: 1;
+            justify-content: center;
         }
 
         .nav-link {
-            color: var(--secondary-color);
+            color: #333;
             text-decoration: none;
             font-weight: 500;
-            padding: 8px 16px;
+            padding: 8px 12px;
             border-radius: 5px;
             transition: all 0.3s;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            white-space: nowrap;
+            font-size: 0.95rem;
         }
 
         .nav-link:hover {
-            background: rgba(255, 59, 48, 0.1);
             color: var(--primary-color);
         }
 
         .nav-link.active {
-            background: var(--primary-color);
-            color: #fff;
+            background: transparent;
+            color: var(--primary-color);
         }
 
         .user-profile {
@@ -102,34 +108,42 @@
             border-radius: 50px;
             cursor: pointer;
             position: relative;
+            min-width: 200px;
+            max-width: 250px;
         }
 
         .user-avatar {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            background: var(--primary-color);
             color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
             font-size: 1.1rem;
+            flex-shrink: 0;
         }
 
         .user-info {
             display: flex;
             flex-direction: column;
+            flex: 1;
+            min-width: 0;
         }
 
         .user-name {
             font-weight: 600;
             color: var(--secondary-color);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .user-role {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #7f8c8d;
         }
 
@@ -215,16 +229,10 @@
         /* Cards */
         .card {
             background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             padding: 2rem;
             margin-bottom: 2rem;
-            transition: all 0.3s;
-        }
-
-        .card:hover {
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-            transform: translateY(-2px);
         }
 
         .card-header {
@@ -233,7 +241,7 @@
             color: var(--secondary-color);
             margin-bottom: 1.5rem;
             padding-bottom: 1rem;
-            border-bottom: 2px solid #f8f9fa;
+            border-bottom: 2px solid #f0f0f0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -242,7 +250,7 @@
         /* Alerts */
         .alert {
             padding: 1rem 1.5rem;
-            border-radius: 12px;
+            border-radius: 10px;
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
@@ -262,13 +270,13 @@
         }
 
         .alert-success {
-            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            background: #d4edda;
             color: #155724;
             border-left: 4px solid #28a745;
         }
 
         .alert-error {
-            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            background: #f8d7da;
             color: #721c24;
             border-left: 4px solid #dc3545;
         }
@@ -276,7 +284,7 @@
         /* Buttons */
         .btn {
             padding: 12px 24px;
-            border-radius: 8px;
+            border-radius: 5px;
             border: none;
             cursor: pointer;
             font-weight: 600;
@@ -289,14 +297,12 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            background: var(--primary-color);
             color: #fff;
-            box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 59, 48, 0.4);
+            background: var(--primary-dark);
         }
 
         .btn-secondary {
@@ -342,10 +348,6 @@
         <nav class="client-nav">
             <div class="nav-brand">
                 <img src="{{ asset('images/logo.png') }}" alt="Zillion Pavillion">
-                <div class="nav-brand-text">
-                    <h2>Zillion Pavillion</h2>
-                    <p>Client Portal</p>
-                </div>
             </div>
 
             <div class="nav-menu">

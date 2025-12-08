@@ -2,7 +2,7 @@
 
 @section('title', 'Dashboard')
 @section('page-title', 'My Dashboard')
-@section('page-subtitle', 'Welcome back, {{ auth()->user()->full_name }}!')
+@section('page-subtitle', 'Welcome back, {{ auth()->guard("web")->user()->full_name }}!')
 
 @push('styles')
 <style>
@@ -14,62 +14,31 @@
     }
 
     .stat-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 20px;
+        background: #fff;
+        border-radius: 10px;
         padding: 2rem;
-        color: #fff;
+        color: #333;
         position: relative;
         overflow: hidden;
-        transition: all 0.3s;
-    }
-
-    .stat-card:nth-child(1) {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-
-    .stat-card:nth-child(2) {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    }
-
-    .stat-card:nth-child(3) {
-        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    }
-
-    .stat-card:nth-child(4) {
-        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-    }
-
-    .stat-card:hover {
-        transform: translateY(-10px) scale(1.02);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
-
-    .stat-card::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        right: -50%;
-        width: 200%;
-        height: 200%;
-        background: rgba(255,255,255,0.1);
-        transform: rotate(45deg);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     }
 
     .stat-icon {
-        font-size: 3rem;
+        font-size: 2.5rem;
         margin-bottom: 1rem;
-        opacity: 0.9;
+        color: var(--primary-color);
     }
 
     .stat-number {
         font-size: 3rem;
         font-weight: 700;
         margin-bottom: 0.5rem;
+        color: var(--secondary-color);
     }
 
     .stat-label {
         font-size: 1rem;
-        opacity: 0.9;
+        color: #7f8c8d;
         font-weight: 500;
     }
 
@@ -82,24 +51,17 @@
 
     .action-card {
         background: #fff;
-        border-radius: 16px;
+        border-radius: 10px;
         padding: 2rem;
         text-align: center;
-        transition: all 0.3s;
-        border: 2px solid transparent;
-    }
-
-    .action-card:hover {
-        border-color: var(--primary-color);
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(255, 59, 48, 0.2);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     }
 
     .action-icon {
         width: 80px;
         height: 80px;
         margin: 0 auto 1rem;
-        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        background: var(--primary-color);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -111,11 +73,13 @@
     .action-card h3 {
         color: var(--secondary-color);
         margin-bottom: 0.5rem;
+        font-size: 1.2rem;
     }
 
     .action-card p {
         color: #7f8c8d;
         margin-bottom: 1.5rem;
+        font-size: 0.95rem;
     }
 </style>
 @endpush
@@ -168,7 +132,7 @@
     </div>
 
     <div class="action-card">
-        <div class="action-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+        <div class="action-icon">
             <i class="fas fa-list"></i>
         </div>
         <h3>My Reservations</h3>
@@ -179,7 +143,7 @@
     </div>
 
     <div class="action-card">
-        <div class="action-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+        <div class="action-icon">
             <i class="fas fa-concierge-bell"></i>
         </div>
         <h3>Service Requests</h3>
@@ -190,7 +154,7 @@
     </div>
 
     <div class="action-card">
-        <div class="action-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+        <div class="action-icon">
             <i class="fas fa-user"></i>
         </div>
         <h3>My Profile</h3>

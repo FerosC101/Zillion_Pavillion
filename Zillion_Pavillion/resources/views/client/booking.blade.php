@@ -12,25 +12,16 @@
         gap: 2rem;
         padding: 2rem;
     }
-
     .room-card {
         background: #fff;
-        border-radius: 16px;
+        border-radius: 10px;
         overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        transition: all 0.3s;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         border: 3px solid transparent;
-    }
-
-    .room-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-        border-color: rgba(255, 59, 48, 0.3);
     }
 
     .room-card.selected {
         border-color: var(--primary-color);
-        box-shadow: 0 8px 24px rgba(255, 59, 48, 0.4);
         position: relative;
     }
     
@@ -39,14 +30,13 @@
         position: absolute;
         top: 15px;
         right: 15px;
-        background: linear-gradient(135deg, #43e97b, #38f9d7);
+        background: var(--primary-color);
         color: #fff;
         padding: 8px 16px;
-        border-radius: 20px;
+        border-radius: 5px;
         font-weight: 600;
         font-size: 0.85rem;
         z-index: 10;
-        box-shadow: 0 4px 12px rgba(67, 233, 123, 0.4);
     }
 
     .room-image {
@@ -59,11 +49,6 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.3s;
-    }
-
-    .room-card:hover .room-image img {
-        transform: scale(1.05);
     }
 
     .room-type-badge {
@@ -73,7 +58,7 @@
         background: rgba(255, 59, 48, 0.95);
         color: #fff;
         padding: 8px 16px;
-        border-radius: 20px;
+        border-radius: 5px;
         font-weight: 600;
         font-size: 0.85rem;
     }
@@ -85,7 +70,7 @@
         background: rgba(0, 0, 0, 0.8);
         color: #fff;
         padding: 10px 16px;
-        border-radius: 8px;
+        border-radius: 5px;
         font-weight: 700;
         font-size: 1.1rem;
     }
@@ -137,7 +122,7 @@
     .amenity-tag {
         background: #f8f9fa;
         padding: 5px 12px;
-        border-radius: 20px;
+        border-radius: 5px;
         font-size: 0.8rem;
         color: #2c3e50;
     }
@@ -150,29 +135,26 @@
     .btn-select-room {
         width: 100%;
         padding: 12px;
-        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        background: var(--primary-color);
         color: #fff;
         border: none;
-        border-radius: 8px;
+        border-radius: 5px;
         font-size: 1rem;
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.3s;
         margin-top: 1rem;
     }
 
     .btn-select-room:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(255, 59, 48, 0.4);
+        background: var(--primary-dark);
     }
 
     .selected-room-info {
-        background: linear-gradient(135deg, #ff3b30 0%, #d32f2f 100%);
+        background: var(--primary-color);
         color: #fff;
         padding: 1.5rem;
-        border-radius: 12px;
+        border-radius: 10px;
         margin-bottom: 2rem;
-        box-shadow: 0 4px 12px rgba(255, 59, 48, 0.2);
     }
 
     .selected-room-info h4 {
@@ -233,25 +215,17 @@
     }
 
     .service-card {
-        border: 2px solid #e0e0e0;
-        border-radius: 12px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
         padding: 20px;
         cursor: pointer;
-        transition: all 0.3s;
         position: relative;
         background: #fff;
     }
 
-    .service-card:hover {
-        border-color: var(--primary-color);
-        box-shadow: 0 6px 16px rgba(255, 59, 48, 0.15);
-        transform: translateY(-2px);
-    }
-
     .service-card.selected {
         border-color: var(--primary-color);
-        background: linear-gradient(135deg, rgba(255, 59, 48, 0.05), rgba(255, 59, 48, 0.1));
-        box-shadow: 0 4px 12px rgba(255, 59, 48, 0.2);
+        background: rgba(255, 59, 48, 0.05);
     }
     
     .service-card.selected::after {
@@ -261,7 +235,7 @@
         right: 10px;
         width: 30px;
         height: 30px;
-        background: linear-gradient(135deg, #43e97b, #38f9d7);
+        background: var(--primary-color);
         color: #fff;
         border-radius: 50%;
         display: flex;
@@ -269,7 +243,6 @@
         justify-content: center;
         font-weight: bold;
         font-size: 1.2rem;
-        box-shadow: 0 2px 8px rgba(67, 233, 123, 0.4);
     }
 
     .service-card input[type="checkbox"] {
@@ -301,9 +274,6 @@
         color: var(--primary-color);
         margin-top: 10px;
         display: inline-block;
-        padding: 8px 16px;
-        background: rgba(255, 59, 48, 0.1);
-        border-radius: 8px;
     }
 
     .form-row {
@@ -313,13 +283,12 @@
     }
 
     .total-preview {
-        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        background: var(--primary-color);
         color: #fff;
         padding: 30px;
-        border-radius: 16px;
+        border-radius: 10px;
         text-align: center;
         margin: 30px 0;
-        box-shadow: 0 6px 20px rgba(67, 233, 123, 0.3);
     }
 
     .total-preview h3 {
