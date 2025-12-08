@@ -33,7 +33,15 @@
                     <option value="5+">5+ Guests</option>
                 </select>
             </div>
-            <button class="search-btn" onclick="scrollToRooms()"><i class="fas fa-search"></i> Search Rooms</button>
+            @auth('web')
+                <button class="search-btn" onclick="window.location.href='{{ route('client.booking.create') }}'">
+                    <i class="fas fa-search"></i> Search Rooms
+                </button>
+            @else
+                <button class="search-btn" onclick="window.location.href='{{ route('login') }}'">
+                    <i class="fas fa-sign-in-alt"></i> Login to Book
+                </button>
+            @endauth
         </div>
     </div>
 </section>
@@ -858,4 +866,33 @@
         </div>
     </div>
 </section>
+
+<script>
+// Set minimum dates for home booking box
+document.addEventListener('DOMContentLoaded', function() {
+    const today = new Date().toISOString().split('T')[0];
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const tomorrowStr = tomorrow.toISOString().split('T')[0];
+    
+    const checkinHome = document.getElementById('checkin');
+    const checkoutHome = document.getElementById('checkout');
+    
+    if (checkinHome) {
+        checkinHome.setAttribute('min', today);
+        checkinHome.addEventListener('change', function() {
+            const selectedDate = new Date(this.value);
+            const nextDay = new Date(selectedDate);
+            nextDay.setDate(nextDay.getDate() + 1);
+            if (checkoutHome) {
+                checkoutHome.setAttribute('min', nextDay.toISOString().split('T')[0]);
+            }
+        });
+    }
+    
+    if (checkoutHome) {
+        checkoutHome.setAttribute('min', tomorrowStr);
+    }
+});
+</script>
 @endsection

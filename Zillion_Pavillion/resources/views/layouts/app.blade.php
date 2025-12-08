@@ -30,7 +30,15 @@
                 <button class="login-btn" onclick="window.location.href='/login'">
                     <i class="fas fa-user"></i> Staff Login
                 </button>
-                <button class="book-now-btn">Book Now</button>
+                @auth('web')
+                    <button class="book-now-btn" onclick="window.location.href='{{ route('client.dashboard') }}'">
+                        <i class="fas fa-user-circle"></i> My Account
+                    </button>
+                @else
+                    <button class="book-now-btn" onclick="openBookingModal()">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </button>
+                @endauth
             </div>
         </div>
     </header>

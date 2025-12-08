@@ -33,18 +33,30 @@
                     <div class="login-header-section">
                         <h1 style="color: #ff3b30; font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">ZILLION PAVILION</h1>
                         <p style="color: #666; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 2rem;">FAMILY & BUSINESS HOTEL</p>
-                        <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem;">Staff Portal</h2>
+                        <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem;">Staff Login</h2>
                         <p style="color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">SIGN IN TO ACCESS THE MANAGEMENT SYSTEM</p>
                     </div>
 
-                    <form action="/login" method="POST" class="login-form">
+                    @if($errors->any())
+                        <div style="background: #fee; border: 1px solid #fcc; padding: 10px; border-radius: 5px; margin-bottom: 15px; color: #c33;">
+                            {{ $errors->first() }}
+                        </div>
+                    @endif
+
+                    @if(session('error'))
+                        <div style="background: #fee; border: 1px solid #fcc; padding: 10px; border-radius: 5px; margin-bottom: 15px; color: #c33;">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                    <form action="{{ route('login.submit') }}" method="POST" class="login-form">
                         @csrf
 
                         <div class="form-group-login">
-                            <label for="email">EMAIL ADDRESS</label>
+                            <label for="username">USERNAME OR EMAIL</label>
                             <div class="input-wrapper">
-                                <i class="fas fa-envelope"></i>
-                                <input type="email" id="email" name="email" placeholder="EmailNAlexander@yahoo.com" required>
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="username" name="username" placeholder="Enter your username" value="{{ old('username') }}" required>
                             </div>
                         </div>
 
