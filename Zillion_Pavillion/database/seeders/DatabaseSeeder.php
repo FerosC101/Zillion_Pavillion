@@ -9,6 +9,8 @@ use App\Models\Service;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Room;
+use App\Models\RoomRate;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,6 +21,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Call staff seeder
+        $this->call(StaffSeeder::class);
+
         // Create built-in admin account
         Admin::create([
             'username' => 'vince',
@@ -127,6 +132,32 @@ class DatabaseSeeder extends Seeder
         foreach ($services as $service) {
             Service::create($service);
         }
+
+        // Create a sample room with a default rate
+        $room = Room::create([
+            'room_number' => '101',
+            'name' => 'Standard Room',
+            'type' => 'Standard',
+            'description' => 'Cozy standard room',
+            'price_per_night' => 3500.00,
+            'max_occupancy' => 2,
+            'bed_count' => 1,
+            'bed_type' => 'Queen',
+            'size_sqm' => 20.00,
+            'amenities' => ['WiFi','TV','AC'],
+            'images' => [],
+            'view_type' => 'Garden',
+            'is_available' => true,
+            'floor_number' => 1,
+        ]);
+
+        RoomRate::create([
+            'room_id' => $room->id,
+            'name' => 'Standard Rate',
+            'price' => 3500.00,
+            'currency' => 'PHP',
+            'is_default' => true,
+        ]);
 
         echo "\n✓ Built-in admin accounts created:";
         echo "\n  Username: vince | Password: 42699";

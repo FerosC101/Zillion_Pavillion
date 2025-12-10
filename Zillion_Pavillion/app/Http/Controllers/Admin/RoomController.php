@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Room;
+use App\Models\RoomRate;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
     public function index()
     {
-        $rooms = Room::orderBy('room_number')->paginate(15);
+        $rooms = Room::with('currentRate')->orderBy('room_number')->paginate(15);
         return view('admin.rooms.index', compact('rooms'));
     }
 
@@ -53,6 +54,7 @@ class RoomController extends Controller
 
     public function edit(Room $room)
     {
+        $room->load('rates');
         return view('admin.rooms.edit', compact('room'));
     }
 
@@ -89,5 +91,38 @@ class RoomController extends Controller
 
         return redirect()->route('admin.rooms.index')
             ->with('success', 'Room deleted successfully!');
+    }
+
+    // Rate management
+    public function createRate(Room $room)
+    {
+        return view('admin.rooms.create_rate', compact('room'));
+    }
+
+    public function storeRate(Request $request, Room $room)
+    {
+        $data = $request->validate([
+            'name' => 'nullable|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'currency' => 'nullable|string|max:8',
+            'effective_from' => 'nullable|date',
+            'effective_to' => 'nullable|date',
+            'is_default' => 'boolean',
+        ]);
+
+        if (!empty($data['is_default'])) {
+            RoomRate::where('room_id', $room->id)->update(['is_default' => false]);
+        }
+
+        $data['room_id'] = $room->id;
+        RoomRate::create($data);
+
+        return redirect()->route('admin.rooms.edit', $room->id)->with('success', 'Rate added.');
+    }
+
+    public function destroyRate(Room $room, RoomRate $rate)
+    {
+        $rate->delete();
+        return redirect()->route('admin.rooms.edit', $room->id)->with('success', 'Rate deleted.');
     }
 }

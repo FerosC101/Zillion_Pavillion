@@ -4,6 +4,13 @@
 @section('page-title', 'Staff Dashboard')
 
 @section('content')
+@if(session('success'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
 <div class="row mb-4">
     <div class="col-md-3 mb-3">
         <div class="stat-card">
@@ -39,6 +46,15 @@
             </div>
             <h3>{{ $stats['today_bookings'] }}</h3>
             <p class="text-muted mb-0">Today's Events</p>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card">
+            <div class="icon text-danger">
+                <i class="bi bi-wrench"></i>
+            </div>
+            <h3>{{ $stats['pending_service_requests'] }}</h3>
+            <p class="text-muted mb-0">Service Requests</p>
         </div>
     </div>
 </div>
@@ -95,6 +111,83 @@
                     @endforelse
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Pending Service Requests</h5>
+                <a href="{{ route('staff.service-requests.index') }}" class="btn btn-sm btn-primary">
+                    <i class="bi bi-list-check"></i> View All
+                </a>
+            </div>
+            <div class="card-body">
+                @if($pending_service_requests->isEmpty())
+                <p class="text-muted text-center mb-0">No pending service requests</p>
+                @else
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Client</th>
+                                <th>Service Type</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Requested</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($pending_service_requests as $request)
+                            <tr>
+                                <td>#{{ $request->id }}</td>
+                                <td>{{ $request->client->full_name ?? 'N/A' }}</td>
+                                <td>{{ ucfirst(str_replace('_', ' ', $request->service_type)) }}</td>
+                                <td>
+                                    @if($request->priority == 'urgent')
+                                        <span class="badge bg-danger">Urgent</span>
+                                    @elseif($request->priority == 'high')
+                                        <span class="badge bg-warning">High</span>
+                                    @elseif($request->priority == 'medium')
+                                        <span class="badge bg-info">Medium</span>
+                                    @else
+                                        <span class="badge bg-secondary">Low</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($request->status == 'pending')
+                                        <span class="badge bg-secondary">Pending</span>
+                                    @elseif($request->status == 'in_progress')
+                                        <span class="badge bg-warning">In Progress</span>
+                                    @else
+                                        <span class="badge bg-success">Completed</span>
+                                    @endif
+                                </td>
+                                <td>{{ $request->requested_at->diffForHumans() }}</td>
+                                <td>
+                                    <form action="{{ route('staff.service-requests.mark-done', $request->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @if($request->status != 'completed')
+                                        <button type="submit" class="btn btn-sm btn-success" title="Mark as Done">
+                                            <i class="bi bi-check-circle"></i>
+                                        </button>
+                                        @endif
+                                    </form>
+                                    <a href="{{ route('staff.service-requests.show', $request->id) }}" class="btn btn-sm btn-info">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                @endif
+            </div>
         </div>
     </div>
 </div>

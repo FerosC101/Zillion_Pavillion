@@ -10,13 +10,13 @@ class BookingController extends Controller
 {
     public function index()
     {
-        $bookings = Booking::with('client')->orderBy('event_date', 'desc')->paginate(15);
+        $bookings = Booking::with('client', 'room')->orderBy('check_in_date', 'desc')->paginate(15);
         return view('staff.bookings.index', compact('bookings'));
     }
 
     public function show(Booking $booking)
     {
-        $booking->load('client', 'services');
+        $booking->load('client', 'room', 'services');
         return view('staff.bookings.show', compact('booking'));
     }
 

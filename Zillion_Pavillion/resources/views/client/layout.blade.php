@@ -354,6 +354,9 @@
                 <a href="{{ route('client.dashboard') }}" class="nav-link {{ request()->routeIs('client.dashboard') ? 'active' : '' }}">
                     <i class="fas fa-home"></i> Dashboard
                 </a>
+                <a href="{{ route('client.rooms.index') }}" class="nav-link {{ request()->routeIs('client.rooms.*') ? 'active' : '' }}">
+                    <i class="fas fa-door-open"></i> Rooms
+                </a>
                 <a href="{{ route('client.booking.create') }}" class="nav-link {{ request()->routeIs('client.booking.create') ? 'active' : '' }}">
                     <i class="fas fa-bed"></i> Book a Room
                 </a>

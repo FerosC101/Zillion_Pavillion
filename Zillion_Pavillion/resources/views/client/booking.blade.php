@@ -321,7 +321,11 @@
         @foreach($rooms as $room)
             <div class="room-card" data-room-id="{{ $room->id }}" data-room-type="{{ $room->type }}" data-price="{{ $room->price_per_night }}">
                 <div class="room-image">
-                    <img src="{{ asset('images/' . $room->images[0]) }}" alt="{{ $room->name }}" onerror="this.src='{{ asset('images/placeholder-room.jpg') }}'">
+                    @if($room->images && count($room->images) > 0)
+                        <img src="{{ asset('images/' . $room->images[0]) }}" alt="{{ $room->name }}" onerror="this.src='{{ asset('images/placeholder-room.jpg') }}'">
+                    @else
+                        <img src="{{ asset('images/placeholder-room.jpg') }}" alt="{{ $room->name }}">
+                    @endif
                     <div class="room-type-badge">{{ $room->type }}</div>
                     <div class="room-price">₱{{ number_format($room->price_per_night, 0) }}/night</div>
                 </div>

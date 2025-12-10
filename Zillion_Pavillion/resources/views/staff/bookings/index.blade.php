@@ -10,8 +10,8 @@
             <tr>
                 <th>ID</th>
                 <th>Client</th>
-                <th>Event Type</th>
-                <th>Event Date</th>
+                <th>Room #</th>
+                <th>Room Type</th>
                 <th>Check-In</th>
                 <th>Check-Out</th>
                 <th>Rooms</th>
@@ -26,7 +26,8 @@
             <tr>
                 <td>#{{ $booking->id }}</td>
                 <td>{{ $booking->client->full_name }}</td>
-                <td>{{ $booking->room_type ?? 'Standard' }}</td>
+                <td>{{ $booking->room ? $booking->room->room_number : '-' }}</td>
+                <td>{{ $booking->room ? $booking->room->type : $booking->room_type ?? 'Standard' }}</td>
                 <td>{{ \Carbon\Carbon::parse($booking->check_in_date)->format('M d, Y') }}</td>
                 <td>{{ \Carbon\Carbon::parse($booking->check_out_date)->format('M d, Y') }}</td>
                 <td>{{ $booking->number_of_rooms }}</td>
@@ -51,7 +52,7 @@
             </tr>
             @empty
             <tr>
-                <td colspan="9" class="text-center">No bookings found</td>
+                <td colspan="11" class="text-center">No bookings found</td>
             </tr>
             @endforelse
         </tbody>

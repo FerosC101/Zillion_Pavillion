@@ -42,6 +42,7 @@ class AuthController extends Controller
         Auth::guard('staff')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('staff.login');
+        // After staff logout redirect to the main unified login page
+        return redirect()->route('login')->with('success', 'You have been logged out.');
     }
 }

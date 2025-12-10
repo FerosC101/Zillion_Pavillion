@@ -30,4 +30,14 @@ class Room extends Model
         'size_sqm' => 'decimal:2',
         'is_available' => 'boolean',
     ];
+
+    public function rates()
+    {
+        return $this->hasMany(RoomRate::class);
+    }
+
+    public function currentRate()
+    {
+        return $this->hasOne(RoomRate::class)->where('is_default', true)->latestOfMany();
+    }
 }
