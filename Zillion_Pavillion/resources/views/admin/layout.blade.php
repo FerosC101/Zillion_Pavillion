@@ -210,6 +210,9 @@
             <a class="nav-link {{ request()->routeIs('admin.clients.*') ? 'active' : '' }}" href="{{ route('admin.clients.index') }}">
                 <i class="bi bi-people"></i> Clients
             </a>
+            <a class="nav-link {{ request()->routeIs('admin.staff.*') ? 'active' : '' }}" href="{{ route('admin.staff.index') }}">
+                <i class="bi bi-person-badge"></i> Staff
+            </a>
             <a class="nav-link {{ request()->routeIs('admin.bookings.*') ? 'active' : '' }}" href="{{ route('admin.bookings.index') }}">
                 <i class="bi bi-calendar-check"></i> Bookings
             </a>

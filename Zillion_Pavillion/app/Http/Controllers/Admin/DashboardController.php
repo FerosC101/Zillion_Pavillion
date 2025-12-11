@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\Booking;
 use App\Models\Service;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,6 +15,8 @@ class DashboardController extends Controller
     {
         $stats = [
             'total_clients' => Client::count(),
+            'total_staff' => Staff::count(),
+            'active_staff' => Staff::where('is_active', true)->count(),
             'total_bookings' => Booking::count(),
             'total_services' => Service::count(),
             'pending_bookings' => Booking::where('status', 'pending')->count(),

@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="row mb-4">
-    <div class="col-md-4 mb-3">
+    <div class="col-md-3 mb-3">
         <div class="stat-card">
             <div class="icon text-primary">
                 <i class="bi bi-people"></i>
@@ -14,7 +14,16 @@
             <p class="text-muted mb-0">Total Clients</p>
         </div>
     </div>
-    <div class="col-md-4 mb-3">
+    <div class="col-md-3 mb-3">
+        <div class="stat-card">
+            <div class="icon text-success">
+                <i class="bi bi-person-badge"></i>
+            </div>
+            <h3>{{ $stats['total_staff'] }}</h3>
+            <p class="text-muted mb-0">Total Staff</p>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
         <div class="stat-card">
             <div class="icon text-warning">
                 <i class="bi bi-calendar-check"></i>
@@ -23,7 +32,7 @@
             <p class="text-muted mb-0">Total Bookings</p>
         </div>
     </div>
-    <div class="col-md-4 mb-3">
+    <div class="col-md-3 mb-3">
         <div class="stat-card">
             <div class="icon text-info">
                 <i class="bi bi-box-seam"></i>
@@ -35,7 +44,7 @@
 </div>
 
 <div class="row mb-4">
-    <div class="col-md-4 mb-3">
+    <div class="col-md-3 mb-3">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title text-warning">Pending Bookings</h5>
@@ -43,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 mb-3">
+    <div class="col-md-3 mb-3">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title text-success">Confirmed Bookings</h5>
@@ -51,11 +60,39 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 mb-3">
+    <div class="col-md-3 mb-3">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title text-primary">Total Revenue</h5>
+                <h5 class="card-title text-info">Completed Bookings</h5>
+                <h2>{{ $stats['completed_bookings'] }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-primary">Active Staff</h5>
+                <h2>{{ $stats['active_staff'] }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-success">Total Revenue</h5>
                 <h2>₱{{ number_format($stats['total_revenue'], 2) }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <a href="{{ route('admin.staff.create') }}" class="btn btn-primary w-100">
+                    <i class="bi bi-plus-circle"></i> Create New Staff Account
+                </a>
             </div>
         </div>
     </div>
